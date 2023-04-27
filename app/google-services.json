@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "156928021772",
+    "project_id": "my-chatapp-5940d",
+    "storage_bucket": "my-chatapp-5940d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156928021772:android:1c71ae917c3e13d4eee529",
+        "android_client_info": {
+          "package_name": "com.aamirashraf.mychatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156928021772-e38oefq202mc428cmnmbl9k01gcnk72h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAmPoNjXWyg1RbmOsLZOyVkQvOpsJnOsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156928021772-e38oefq202mc428cmnmbl9k01gcnk72h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
