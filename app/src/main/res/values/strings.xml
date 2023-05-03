@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Chatapp</string>
     <string name="default_web_client_id" />
+    <string name="mapbox_access_token">pk.eyJ1IjoicHJlZGF0b3IzMTMiLCJhIjoiY2xoMXAza3g0MTVnbjNycGVzM3Izc2thdSJ9.qcEL40oZCCswXV9pRNab2Q</string>
 </resources>

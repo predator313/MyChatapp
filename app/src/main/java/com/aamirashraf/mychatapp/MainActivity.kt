@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.mapbox.maps.MapView
 
 
 class MainActivity : AppCompatActivity() {
@@ -64,6 +65,13 @@ class MainActivity : AppCompatActivity() {
         if(item.itemId== R.id.logout){
             auth.signOut()
             val intent=Intent(this@MainActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            return true
+        }
+        if(item.itemId==R.id.location){
+            val mv=findViewById<MapView>(R.id.mapView)
+            val intent=Intent(this@MainActivity,MapboxActivity::class.java)
             startActivity(intent)
             finish()
             return true

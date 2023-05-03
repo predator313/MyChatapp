@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
@@ -25,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         etPassword=findViewById(R.id.etPassword)
         etName=findViewById(R.id.etName)
         btnSignUp=findViewById(R.id.btnSignUp)
+        FirebaseApp.initializeApp(this)
         auth= FirebaseAuth.getInstance()
         btnSignUp.setOnClickListener {
             val email=etEmail.text.toString()
