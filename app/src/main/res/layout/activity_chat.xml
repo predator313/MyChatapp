@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@
         android:layout_above="@id/chatLinearLayout"
         android:layout_alignParentTop="true"
         />
+
     <LinearLayout
         android:id="@+id/chatLinearLayout"
         android:layout_width="match_parent"
@@ -21,15 +23,18 @@
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:weightSum="100">
-        <EditText
-            android:id="@+id/messageBox"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:hint="type a message"
-            android:background="@drawable/messagebox_back"
-            android:layout_marginLeft="10dp"
-            android:paddingLeft="10dp"
-            android:layout_weight="80"/>
+
+           <EditText
+               android:id="@+id/messageBox"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:hint="type a message"
+               android:background="@drawable/messagebox_back"
+               android:layout_marginLeft="10dp"
+               android:paddingLeft="10dp"
+               android:layout_weight="80"/>
+
+
         <ImageView
             android:id="@+id/sendBtn"
             android:layout_width="50dp"
@@ -37,4 +42,18 @@
             android:layout_weight="20"
             android:src="@drawable/ic_action_name"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/share_location_imgview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/chatRecyclerView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="388dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_action_sharelocation"
+        android:visibility="invisible" />
 </RelativeLayout>

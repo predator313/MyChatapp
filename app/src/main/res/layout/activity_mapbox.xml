@@ -9,6 +9,7 @@
 
         xmlns:mapbox="http://schemas.android.com/apk/res-auto"
         android:id="@+id/mapView"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         mapbox:mapbox_cameraTargetLat="28.644800"

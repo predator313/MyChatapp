@@ -56,27 +56,28 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId== R.id.logout){
-            auth.signOut()
-            val intent=Intent(this@MainActivity,LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-            return true
-        }
-        if(item.itemId==R.id.location){
-            val mv=findViewById<MapView>(R.id.mapView)
-            val intent=Intent(this@MainActivity,MapboxActivity::class.java)
-            startActivity(intent)
-            finish()
-            return true
-        }
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu,menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if(item.itemId== R.id.logout){
+//            auth.signOut()
+//            val intent=Intent(this@MainActivity,LoginActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//            return true
+//        }
+//        if(item.itemId==R.id.location){
+//            val mv=findViewById<MapView>(R.id.mapView)
+//            val intent=Intent(this@MainActivity,MapboxActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//            return true
+//        }
+////
+//        return true
+//    }
 
 }
