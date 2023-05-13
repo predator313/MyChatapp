@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         userRecyclerView=findViewById(R.id.userRecyclerView)
         userRecyclerView.layoutManager=LinearLayoutManager(this)
         userRecyclerView.adapter=adapter
+        val latt=intent.getDoubleExtra("lat",28.54)
+        val lon=intent.getDoubleExtra("lon",77.20)
         mdbRef.child("user").addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()

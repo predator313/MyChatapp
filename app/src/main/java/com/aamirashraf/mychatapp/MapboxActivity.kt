@@ -1,6 +1,7 @@
 package com.aamirashraf.mychatapp
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -9,31 +10,29 @@ import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.type.LatLng
 import com.mapbox.android.core.location.LocationEngine
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.common.toValue
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapView
 import com.mapbox.maps.MapboxMap
 import com.mapbox.maps.Style
+import com.mapbox.maps.plugin.animation.MapAnimationOwnerRegistry.COMPASS
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.CircleAnnotationOptions
-import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
-import com.mapbox.maps.plugin.annotation.generated.PolylineAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createCircleAnnotationManager
-import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
-import com.mapbox.maps.plugin.annotation.generated.createPolylineAnnotationManager
 import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.locationcomponent.location
+
 
 class MapboxActivity : AppCompatActivity(),PermissionsListener,LocationListener{
    private lateinit var mapView: MapView
@@ -82,9 +81,18 @@ class MapboxActivity : AppCompatActivity(),PermissionsListener,LocationListener{
          */
 
 
+//        val senderLong=intent.extras?.getDouble("lon",77.20)
+////        val senderlat=intent.extras?.getDouble("lat",8.54)
+//        val senderLong=77.20
+//        val senderlat=28.54
+//        val senderlat=intent.getDoubleExtra("lat",8.56)
+        val senderLong=intent.getDoubleExtra("lon",77.20)
+        val senderlat=intent.getDoubleExtra("lat",28.54)
+
+
 
         mapView.getMapboxMap().loadStyleUri(
-            Style.TRAFFIC_DAY,
+            Style.SATELLITE_STREETS,
             // After the style is loaded, initialize the Location component.
             object : Style.OnStyleLoaded {
                 override fun onStyleLoaded(style: Style) {
@@ -93,17 +101,19 @@ class MapboxActivity : AppCompatActivity(),PermissionsListener,LocationListener{
                         pulsingEnabled = true
 //                        addAnnotationToMap()
                     }
-//                    addAnnotationToMap()
+                    addAnnotationToMap(senderlat, senderLong)
                 }
             }
         )
+
+
         map.addOnMapClickListener { point ->
 //            Toast.makeText(this, point.latitude().toString(), Toast.LENGTH_LONG).show()
             lat=point.latitude()
             lon=point.longitude()
 //            Point
-            Log.d(TAG,"${lat.toString()}")
-            Log.d(TAG,"${lon.toString()}")
+//            Log.d(TAG,"${senderLong.toString()}")
+//            Log.d(TAG,"${senderlat.toString()}")
 //            addAnnotationToMap(lat,lon)
             addAnnotationToMap()
             false // Return false instead of true
@@ -189,37 +199,13 @@ class MapboxActivity : AppCompatActivity(),PermissionsListener,LocationListener{
             com.mapbox.maps.R.drawable.mapbox_compass_icon
         )?.let {
             val annotationApi = mapView?.annotations
-            //line annotation
-           val polylineAnnotationManager = annotationApi?.createPolylineAnnotationManager(mapView)
-// Define a list of geographic coordinates to be connected.
-            val points = mutableListOf(
-                Point.fromLngLat(longg,latt),
-                Point.fromLngLat(longitude, latitude)
-            )
-// Set options for the resulting line layer.
-            val polylineAnnotationOptions: PolylineAnnotationOptions = PolylineAnnotationOptions()
-                .withPoints(points)
-                // Style the line that will be added to the map.
-                .withLineColor("#ee4e8b")
-                .withLineWidth(5.0)
-// Add the resulting line to the map.
-            polylineAnnotationManager?.create(polylineAnnotationOptions)
-        }
-    }
-    private fun addAnnotationToMap() {
-        bitmapFromDrawableRes(
-            this@MapboxActivity,
-            com.mapbox.maps.R.drawable.mapbox_compass_icon
-        )?.let {
-            val annotationApi = mapView?.annotations
-
             val circleAnnotationManager = annotationApi?.createCircleAnnotationManager(mapView)
 // Set options for the resulting circle layer.
             val circleAnnotationOptions: CircleAnnotationOptions = CircleAnnotationOptions()
                 // Define a geographic coordinate.
-                .withPoint(Point.fromLngLat(lon, lat))
+                .withPoint(Point.fromLngLat(longg, latt))
                 // Style the circle that will be added to the map.
-                .withCircleRadius(30.0)
+                .withCircleRadius(10.0)
                 .withCircleColor("#ee4e8b")
                 .withCircleStrokeWidth(2.0)
                 .withCircleStrokeColor("#ffffff")
@@ -227,6 +213,30 @@ class MapboxActivity : AppCompatActivity(),PermissionsListener,LocationListener{
             circleAnnotationManager?.create(circleAnnotationOptions)
 
         }
+    }
+    private fun addAnnotationToMap() {
+//        bitmapFromDrawableRes(
+//            this@MapboxActivity,
+//            com.mapbox.maps.R.drawable.mapbox_compass_icon
+//        )?.let {
+//            val annotationApi = mapView?.annotations
+////
+//            val circleAnnotationManager = annotationApi?.createCircleAnnotationManager(mapView)
+//// Set options for the resulting circle layer.
+//            val circleAnnotationOptions: CircleAnnotationOptions = CircleAnnotationOptions()
+//                // Define a geographic coordinate.
+//                .withPoint(Point.fromLngLat(lon, lat))
+//                // Style the circle that will be added to the map.
+//                .withCircleRadius(30.0)
+//                .withCircleColor("#ee4e8b")
+//                .withCircleStrokeWidth(2.0)
+//                .withCircleStrokeColor("#ffffff")
+//// Add the resulting circle to the map.
+//            circleAnnotationManager?.create(circleAnnotationOptions)
+
+//
+        Toast.makeText(this,"$lon $lat",Toast.LENGTH_SHORT).show()
+
     }
     private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
         convertDrawableToBitmap(AppCompatResources.getDrawable(context, resourceId))
@@ -253,6 +263,8 @@ class MapboxActivity : AppCompatActivity(),PermissionsListener,LocationListener{
     }
 
 }
+
+
 
 //private fun MapView.addOnMapClickListener(onMapClickListener: (point: Point) -> Unit) {
 //

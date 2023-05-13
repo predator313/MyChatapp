@@ -16,9 +16,19 @@
            android:id="@+id/txt_send_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             android:text="this is sent message"
 
             android:textSize="20sp"/>
+        <ImageView
+            android:id="@+id/red_marker_location_sender"
+            android:layout_width="179dp"
+            android:layout_height="50dp"
+
+            android:layout_toRightOf="@id/txt_send_message"
+            android:visibility="gone"
+            android:src="@drawable/ic_action_sharelocation" />
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -21,6 +21,12 @@ class UserAdapter(private val context:Context, private val userList:ArrayList<Us
         val currentUser=userList[position]
         holder.textName.text=currentUser.name
         holder.itemView.setOnClickListener{
+//            val intentt= holder.itemView.context.
+            //here is the main logic how to implement it
+            //tomorrow i will try it
+            //this is the final purpose of the code
+//            val inten=holder.itemView.context
+
             val intent=Intent(context,ChatActivity::class.java)
             intent.putExtra("name",currentUser.name)
             intent.putExtra("uid",currentUser?.uid)
@@ -28,10 +34,12 @@ class UserAdapter(private val context:Context, private val userList:ArrayList<Us
         }
     }
 
+
     override fun getItemCount(): Int {
        return userList.size
     }
     class UserViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val textName=itemView.findViewById<TextView>(R.id.txt_name)
+
     }
 }

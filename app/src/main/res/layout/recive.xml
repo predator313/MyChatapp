@@ -20,9 +20,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:visibility="visible"
                 android:text="this is receive message"
 
                 android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/red_marker_location_reciver"
+            android:layout_width="179dp"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@id/txt_recive_message"
+            android:visibility="gone"
+            android:src="@drawable/ic_action_sharelocation" />
 
 
 
@@ -30,14 +39,7 @@
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/red_marker_location_sender"
-        android:layout_width="179dp"
-        android:layout_height="50dp"
 
-        android:layout_toRightOf="@id/hello"
-        android:visibility="invisible"
-        android:src="@drawable/ic_action_sharelocation" />
 
 
 </RelativeLayout>

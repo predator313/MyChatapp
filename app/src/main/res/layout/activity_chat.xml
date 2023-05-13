@@ -43,17 +43,5 @@
             android:src="@drawable/ic_action_name"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/share_location_imgview"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/chatRecyclerView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="23dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="388dp"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:src="@drawable/ic_action_sharelocation"
-        android:visibility="invisible" />
+
 </RelativeLayout>
